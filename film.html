@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie search platform</title>
+    <script src="https://kit.fontawesome.com/980f9b63b6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="flex flex-col">
+            <div class="navbarr flex flex-col">
+                <div class="flex content-wrapper justify-between align-center">
+                    <div class="logo">
+                        <img src="https://dev.d24jig8s1lr7n9.amplifyapp.com/img/whitelogo.39850b27.png" alt="">
+                    </div>
+                    <div class="links flex align-center justify-between">
+                        <a href="" class="link router-link-active">Home</a>
+                        <a href="" class="link router-link-exact-active router-link-active">Find your car</a>
+                        <a class="btn-contact">Contact</a>
+                    </div>
+                    <div id="phone-nav">
+                        <div class="bento-menu"></div>
+                        <div class="close-btn"></div>
+                        <div class="showMenu">
+                            <a href="" class="link router-link-active">Home</a>
+                            <a href="" class="link router-link-exact-active router-link-active">Find your movie</a>
+                            <a href="" class="link router-link-active">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-wrapper flex-col align-center">
+                    <h1>Browse our movies</h1>
+                    <div class="input-wrap">
+                        <input type="text" placeholder="Search">
+                        <div class="search-wrapper flex justify-center align-center">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+            <section id="search">
+                <div id="filter" class="content-wrapper justify-between">
+                    <h1 class="search-info">Search results:</h1>
+                </div>
+                <div class="content-wrapper">
+                    <div class="loading-state flex justify-center">
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
