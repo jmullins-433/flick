@@ -35,6 +35,7 @@
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
+    z-index: 2;
 }
 
 .navbar .links {
@@ -153,6 +154,7 @@ button:hover {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
 }
 
 .flex-col {
@@ -169,9 +171,119 @@ button:hover {
     background-color: grey;
     align-items: center;
     position: relative;
+    
 }
 
-.navbarr .logo {
+.navbarr .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
     height: 40px;
     width: 150px;
+}
+
+.navbarr .links {
+    width: 100%;
+    max-width: 430px;
+}
+
+#phone-nav {
+    display: none;
+    position: relative;
+}
+
+a.btnn-contact {
+    display: flex;
+    cursor: pointer;
+    max-height: 48px;
+    min-height: 48px;
+    padding: 12px 40px;
+    align-items: center;
+    border: 2px #fff;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #6030b1 !important;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all .35s ease;
+}
+
+a.btnn-contact:hover {
+    background-color: #ff328f;
+    color: #fff !important;
+}
+
+.tk {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.next__title {
+    color: #fff;
+    font-weight: lighter;
+}
+
+.input-wrap {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+input .icee {
+    color: rgba(0, 0, 0, .87);
+    width: 100%;
+    max-width: 800px;
+    height: 60px;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.search-wrapper {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    padding: 0 20px 0 8px;
+    color: #6030b1;
+    font-size: 32px;
+    transition: all .2s ease;
+}
+
+.fa-magnifying-glass:hover {
+    color:#ff328f;
+}
+
+.overlay {
+    background-image: url(./assets/block.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    
+}
+
+.overlay:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(41, 25, 71, .83);
+    pointer-events: none;
 }
