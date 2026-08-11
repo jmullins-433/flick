@@ -235,13 +235,14 @@ a.btnn-contact:hover {
     overflow: hidden;
 }
 
-input .icee {
+.icee {
     color: rgba(0, 0, 0, .87);
     width: 100%;
     max-width: 800px;
     height: 60px;
     font-size: 20px;
     padding-left: 20px;
+    
 }
 
 .search-wrapper {
@@ -286,4 +287,19 @@ input .icee {
     bottom: 0;
     background-color: rgba(41, 25, 71, .83);
     pointer-events: none;
+}
+
+.search-info {
+    font-size: 28px;
+    line-height: 1.25;
+    color: #0a1f44;
+}
+
+.fa-spinner {
+    display: none;
+}
+
+.loading-state {
+    margin: 80px 0;
+    width: 100%;
 }
