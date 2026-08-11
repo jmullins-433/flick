@@ -242,7 +242,6 @@ a.btnn-contact:hover {
     height: 60px;
     font-size: 20px;
     padding-left: 20px;
-    
 }
 
 .search-wrapper {
@@ -290,9 +289,17 @@ a.btnn-contact:hover {
 }
 
 .search-info {
+   color: #6030b1;
+}
+
+.team {
     font-size: 28px;
     line-height: 1.25;
+}
+
+.black-txt {
     color: #0a1f44;
+    display: inline-block;
 }
 
 .fa-spinner {
