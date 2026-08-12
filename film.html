@@ -34,28 +34,32 @@
                 <div class="content-wrapper flex-col align-center">
                     <h1 class="next__title">Browse our movies</h1>
                     <div class="input-wrap">
-                        <input type="text" class="icee" placeholder="Search">
+                        <input type="text" id="movieSearch"  placeholder="Search">
+                       
                         <div class="search-wrapper flex justify-center align-center">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                     </div>
+                     
+                    <div id="moviesGrid"></div>
+                
                 </div>
-                <div class="overlay">
-                    ::after
-                </div>
+                
+                <div class="overlay"></div>
             </div>
             <section id="search">
                 <div id="filter" class="content-wrapper justify-between">
                     <h1 class="search-info team">
                     <span class="black-txt">Search results for</span>
-                    <span class="Poster"></span>
                     </h1>
                 </div>
+                
                 <div class="content-wrapper">
                     <div class="loading-state flex justify-center">
                         <i class="fa-solid fa-spinner"></i>
                     </div>
                 </div>
+            
             </section>
         </div>
     </div>
