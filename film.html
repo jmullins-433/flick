@@ -17,7 +17,7 @@
                         <img src="./assets/whitelogo.png" alt="Blinker logo">
                     </div>
                     <div class="links flex align-center justify-between">
-                        <a href="index.html" class="link router-link-active tk">Home</a>
+                        <a href="./index.html" class="link router-link-active tk">Home</a>
                         <a href="" class="link router-link-exact-active router-link-active tk">Find your movie</a>
                         <a class="btnn-contact">Contact</a>
                     </div>
@@ -34,25 +34,38 @@
                 <div class="content-wrapper flex-col align-center">
                     <h1 class="next__title">Browse our movies</h1>
                     <div class="input-wrap">
+                        
                         <input type="text" id="movieSearch"  placeholder="Search">
-                       
-                        <div class="search-wrapper flex justify-center align-center">
+                       <div class="search-wrapper flex justify-center align-center" id="searchButton">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                     </div>
-                     
-                    <div id="moviesGrid"></div>
-                
+
+
+
+                     <div class="moviesGrid"></div>
+                      
                 </div>
                 
+                
+                     
+                  
                 <div class="overlay"></div>
             </div>
             <section id="search">
                 <div id="filter" class="content-wrapper justify-between">
                     <h1 class="search-info team">
                     <span class="black-txt">Search results for</span>
+                            <span id="search-term" class="search-term"></span> 
                     </h1>
                 </div>
+
+                 
+                
+                
+                
+                
+                
                 
                 <div class="content-wrapper">
                     <div class="loading-state flex justify-center">
