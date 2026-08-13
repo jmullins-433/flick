@@ -3,6 +3,7 @@ function displayMovies(movies) {
     const moviesGrid = document.querySelector('.moviesGrid');
     moviesGrid.innerHTML = ''; // Clear previous results
 
+
     movies.forEach(movie => {
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie-card');
@@ -19,6 +20,10 @@ async function fetchMovies() {
     const query = document.getElementById('movieSearch').value.trim();
     const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
 
+    const loadingSpinner = document.querySelector('.loading-state--spinner');
+    loadingSpinner.style.display = 'block'; // Show spinner
+
+
     try {
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -31,6 +36,8 @@ async function fetchMovies() {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
+
+    loadingSpinner.style.display = 'none'; // Hide spinner
 }
 
 document.getElementById('movieSearch').addEventListener('keydown', function(event) {
@@ -89,3 +96,14 @@ function searchMovies() {
         displayMovies(movies);
     });
 }
+
+
+
+function searchMovies(searchTerm) {
+    // Perform your search logic here
+
+    // Update the search term display
+    const searchTermSpan = document.getElementById('search-term');
+    searchTermSpan.textContent = searchTerm; // Set the search term dynamically
+}
+
