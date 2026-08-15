@@ -2,6 +2,7 @@
 * {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+
   }
 
   .purple {
@@ -443,11 +444,15 @@ h2.star {
 
 .menu {
     color: #6030b1;
+    display: flex;
+    justify-content: right;
     
 }
 
 .pop {
     color: #fff;
+    display: flex;
+    justify-content: right;
 
 }
 
@@ -455,28 +460,75 @@ h2.star {
     display: none;
 }
 
-#phone-nav .close-btn,
-#phone-nav .showMenu {
-  display: none;
+#phone-nav {
+    position: relative;
 }
+
 
 @media (max-width: 768px) {
     .navbar .links {
+        display: none;
+    }
+    
+    .link, a.btnn-contact {
         display: none;
     }
 
     #phone-nav {
         display: block;
     }
-
-    .link, a.btnn-contact {
-        display: none;
-    }
-
 }
 
 
+@media (max-width: 585px) {
+    h1, h2 {
+        text-align: left;
+    }
+
+    .input__wrapper {
+        flex-direction: column;
+    }
+
+    .input__wrapper input {
+        font-size: 16px;
+        height: 60px;
+        padding: 0 0 0 8px;
+        width: auto;
+    }
+
+    .input__wrapper button {
+        max-width: none !important;
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+
+    .building {
+        display: none;
+    }
     
+}
+    
+@media (max-width: 500px ){
+    .next__title {
+        font-size: 28px;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    .nxt {
+        font-size: 16px;
+        height: 50px;
+    }
+
+    .pop {
+        position: absolute;
+    }
+
+
+}
+
 
 
 

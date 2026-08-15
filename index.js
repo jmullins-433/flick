@@ -1,7 +1,7 @@
 
 function displayMovies(movies) {
     const moviesGrid = document.querySelector('.moviesGrid');
-    moviesGrid.innerHTML = ''; // Clear previous results
+    moviesGrid.innerHTML = ''; 
 
 
     movies.forEach(movie => {
@@ -23,14 +23,14 @@ async function fetchMovies() {
     const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
 
     const loadingSpinner = document.querySelector('.loading-state--spinner');
-    loadingSpinner.style.display = 'block'; // Show spinner
+    loadingSpinner.style.display = 'block'; 
 
     try {
         const response = await fetch(apiUrl);
         const data = await response.json();
 
         if (data.Search) {
-            // Use .slice(0, 6) to get the first 6 results
+            
             const firstSixMovies = data.Search.slice(0, 6);
             displayMovies(firstSixMovies); // Call the function with the first 6 movie data
         } else {
@@ -40,7 +40,7 @@ async function fetchMovies() {
         console.error('Error fetching data:', error);
     }
 
-    loadingSpinner.style.display = 'none'; // Hide spinner
+    loadingSpinner.style.display = 'none'; 
 }
 
 
@@ -48,11 +48,11 @@ async function fetchMovies() {
 
 document.getElementById('movieSearch').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        fetchMovies(); // Call the fetchMovies function when Enter is pressed
+        fetchMovies(); 
     }
 });
 
-// Also, don't forget to add the click event for the search button
+
 document.querySelector('.search-wrapper').addEventListener('click', fetchMovies);
 
 
@@ -60,15 +60,15 @@ document.querySelector('.search-wrapper').addEventListener('click', fetchMovies)
 
 function displayMovies(movies) {
     const moviesGrid = document.querySelector('.moviesGrid');
-    moviesGrid.innerHTML = ''; // Clear previous results
+    moviesGrid.innerHTML = ''; 
 
-    // Check if there are movies to display
+    
     if (movies.length === 0) {
-        moviesGrid.innerHTML = '<p>No movies found.</p>'; // Optional: Display a message if no results
+        moviesGrid.innerHTML = '<p>No movies found.</p>'; 
         return;
     }
 
-    // Loop through the movies and create cards
+    
     movies.forEach(movie => {
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie-card');
@@ -87,17 +87,17 @@ function searchMovies() {
     const moviesGrid = document.querySelector('.moviesGrid');
     const searchTermSpan = document.getElementById('search-term'); // Get the span for the search term
 
-    // Clear previous results if the input is empty
+    
     if (!query) {
-        moviesGrid.innerHTML = ''; // Remove any existing movie cards if no input
-        searchTermSpan.textContent = ''; // Clear the search term display
-        return; // Exit the function early
+        moviesGrid.innerHTML = ''; 
+        searchTermSpan.textContent = ''; 
+        return; 
     }
 
-    // Update the search term display
+  
     searchTermSpan.textContent = query; // Set the search term in the span
 
-    // Assuming you have a function to fetch movies based on the query
+   
     fetchMovies(query).then(movies => {
         displayMovies(movies);
     });
@@ -106,9 +106,7 @@ function searchMovies() {
 
 
 function searchMovies(searchTerm) {
-    // Perform your search logic here
-
-    // Update the search term display
+    
     const searchTermSpan = document.getElementById('search-term');
     searchTermSpan.textContent = searchTerm; // Set the search term dynamically
 }
