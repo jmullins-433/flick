@@ -10,6 +10,7 @@
     <script src="./index.js" defer></script>
 </head>
 <body>
+    <div id="app">
     <header class="navbar">
         <div class="nav content-wrapper justify-between align-center">
             <div class="logo">
@@ -20,7 +21,22 @@
             <a href="./film.html">Find your movie</a>
             <a class="btn-contact">Contact</a>
         </div>
-        </div>
+        
+        <div id="phone-nav"> 
+            <div class="menu">
+                <i class="fa-solid fa-grip"></i>
+            </div>
+            <div class="close-btn">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="showMenu">
+                <a href="" class="link router-link-exact-active router-link-active">Home</a>
+                <a href="./film.html" class="link">Find your movie</a>
+                <a href="" class="link router-link-exact-active router-link-active">Contact</a>
+            </div>
+         </div>   
+        
+    </div>
     </header>
     <section id="landing-page">
         <div class="content__wrapper flex-col align-center justify-between">
@@ -39,7 +55,7 @@
             <img class="building" src="https://dev.d24jig8s1lr7n9.amplifyapp.com/img/building.681ea6bf.png">
         </div>
     
-        
-    </section>
-</body>
+        </section>
+        </div>
+    </body>
 </html>

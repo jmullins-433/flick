@@ -16,6 +16,8 @@ function displayMovies(movies) {
     });
 }
 
+
+
 async function fetchMovies() {
     const query = document.getElementById('movieSearch').value.trim();
     const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
@@ -23,13 +25,14 @@ async function fetchMovies() {
     const loadingSpinner = document.querySelector('.loading-state--spinner');
     loadingSpinner.style.display = 'block'; // Show spinner
 
-
     try {
         const response = await fetch(apiUrl);
         const data = await response.json();
 
         if (data.Search) {
-            displayMovies(data.Search); // Call the function with the movie data
+            // Use .slice(0, 6) to get the first 6 results
+            const firstSixMovies = data.Search.slice(0, 6);
+            displayMovies(firstSixMovies); // Call the function with the first 6 movie data
         } else {
             console.error('No movies found.');
         }
@@ -39,6 +42,9 @@ async function fetchMovies() {
 
     loadingSpinner.style.display = 'none'; // Hide spinner
 }
+
+
+
 
 document.getElementById('movieSearch').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -106,4 +112,8 @@ function searchMovies(searchTerm) {
     const searchTermSpan = document.getElementById('search-term');
     searchTermSpan.textContent = searchTerm; // Set the search term dynamically
 }
+
+
+
+
 

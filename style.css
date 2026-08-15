@@ -85,6 +85,44 @@ a.btn-contact:hover {
     background-color: #5d3eff;
 }
 
+#phone-nav {
+    position: relative;
+    display: none;
+}
+
+.bento-menu {
+    color: #6030b1;
+    
+}
+
+.close-btn {
+    pointer-events: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 37px;
+    height: 37px;
+    background-color: transparent;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+.showMenu {
+    transform: translateX(100%);
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1005;
+    background-color: hsla(0, 0%, 100%, .95);
+    transition: all .4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 h1 {
     max-width: 730px;
     font-weight: 700;
@@ -199,11 +237,6 @@ button:hover {
 .navbarr .links {
     width: 100%;
     max-width: 430px;
-}
-
-#phone-nav {
-    display: none;
-    position: relative;
 }
 
 a.btnn-contact {
@@ -407,6 +440,43 @@ h2.star {
 .input__wrapper.star {
     animation-delay: 0.9s; /* Delay for input */
 }
+
+.menu {
+    color: #6030b1;
+    
+}
+
+.pop {
+    color: #fff;
+
+}
+
+.menu-toggle {
+    display: none;
+}
+
+#phone-nav .close-btn,
+#phone-nav .showMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+    .navbar .links {
+        display: none;
+    }
+
+    #phone-nav {
+        display: block;
+    }
+
+    .link, a.btnn-contact {
+        display: none;
+    }
+
+}
+
+
+    
 
 
 
