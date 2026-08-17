@@ -108,8 +108,55 @@ function searchMovies() {
 function searchMovies(searchTerm) {
     
     const searchTermSpan = document.getElementById('search-term');
-    searchTermSpan.textContent = searchTerm; // Set the search term dynamically
+    searchTermSpan.textContent = searchTerm; 
 }
+
+
+
+
+
+
+function redirectToResults() {
+    const query = document.getElementById('movieSearch').value.trim();
+    if (query) {
+        
+        window.location.href = `./film.html?search=${encodeURIComponent(query)}`;
+    } else {
+        alert('Please enter a search term.');
+    }
+}
+
+
+async function fetchMovies() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('search'); 
+    const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
+
+    const loadingSpinner = document.querySelector('.loading-state--spinner');
+    loadingSpinner.style.display = 'block'; 
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json(); 
+        
+        if (data.Response === "True") {
+            displayMovies(data.Search.slice(0, 6)); 
+        } else {
+            alert('No results found.');
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    } finally {
+         loadingSpinner.style.display = 'none'; 
+    }
+   
+}
+
+
+window.onload = fetchMovies;
+
+
+
 
 
 
