@@ -66,44 +66,18 @@ async function fetchMovies() {
 
 
 
-document.getElementById('movieSearch').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        fetchMovies(); 
+function redirectToResults() {
+    const query = document.getElementById('movieSearch').value.trim();
+
+    if (query) {
+        window.location.href =
+            `./film.html?search=${encodeURIComponent(query)}`;
+    } else {
+        alert('Please enter a search term.');
     }
-});
-
-
-document.querySelector('.search-wrapper').addEventListener('click', fetchMovies);
-
-
-
-
-function displayMovies(movies) {
-    const moviesGrid = document.querySelector('.moviesGrid');
-    moviesGrid.innerHTML = ''; 
-
-    
-    if (movies.length === 0) {
-        moviesGrid.innerHTML = '<p>No movies found.</p>'; 
-        return;
-    }
-
-    
-    movies.forEach(movie => {
-        const movieCard = document.createElement('div');
-        movieCard.classList.add('movie-card');
-        movieCard.innerHTML = `
-            <h3>${movie.Title}</h3>
-            <p><b>Year:</b> ${movie.Year}</p>
-            <p><b>Poster:</b> <img src="${movie.Poster}" target="_blank">${movie.Poster}</a></p>
-        `;
-        moviesGrid.appendChild(movieCard);
-    });
 }
 
-
-function searchMovies() {
-    const movieSearchInput = document.getElementById('movieSearch');
+const movieSearchInput = document.getElementById('movieSearch');
 const searchButton = document.querySelector('.search-wrapper');
 const moviesGrid = document.querySelector('.moviesGrid');
 
@@ -124,17 +98,6 @@ if (searchButton) {
 if (moviesGrid) {
     fetchMovies();
 }
-}
-
-
-
-function searchMovies(searchTerm) {
-    
-    const searchTermSpan = document.getElementById('search-term');
-    searchTermSpan.textContent = searchTerm; 
-}
-
-
 
 
 
