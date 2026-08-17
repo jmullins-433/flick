@@ -19,28 +19,48 @@ function displayMovies(movies) {
 
 
 async function fetchMovies() {
-    const query = document.getElementById('movieSearch').value.trim();
-    const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
+    const movieSearchInput = document.getElementById('movieSearch');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlQuery = urlParams.get('search');
+
+    const query = movieSearchInput.value.trim() || urlQuery;
+
+    if (!query) return;
+
+    // If the search came from the Home page, show it in the input
+    if (!movieSearchInput.value && urlQuery) {
+        movieSearchInput.value = urlQuery;
+    }
+
+    const searchTermSpan = document.getElementById('search-term');
+    if (searchTermSpan) {
+        searchTermSpan.textContent = query;
+    }
 
     const loadingSpinner = document.querySelector('.loading-state--spinner');
-    loadingSpinner.style.display = 'block'; 
+
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'block';
+    }
 
     try {
+        const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
 
-        if (data.Search) {
-            
-            const firstSixMovies = data.Search.slice(0, 6);
-            displayMovies(firstSixMovies); // Call the function with the first 6 movie data
+        if (data.Response === "True") {
+            displayMovies(data.Search.slice(0, 6));
         } else {
-            console.error('No movies found.');
+            alert('No results found.');
         }
     } catch (error) {
         console.error('Error fetching data:', error);
+    } finally {
+        if (loadingSpinner) {
+            loadingSpinner.style.display = 'none';
+        }
     }
-
-    loadingSpinner.style.display = 'none'; 
 }
 
 
@@ -83,24 +103,27 @@ function displayMovies(movies) {
 
 
 function searchMovies() {
-    const query = movieSearchInput.value.trim();
-    const moviesGrid = document.querySelector('.moviesGrid');
-    const searchTermSpan = document.getElementById('search-term'); // Get the span for the search term
+    const movieSearchInput = document.getElementById('movieSearch');
+const searchButton = document.querySelector('.search-wrapper');
+const moviesGrid = document.querySelector('.moviesGrid');
 
-    
-    if (!query) {
-        moviesGrid.innerHTML = ''; 
-        searchTermSpan.textContent = ''; 
-        return; 
+movieSearchInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        if (moviesGrid) {
+            fetchMovies();
+        } else {
+            redirectToResults();
+        }
     }
+});
 
-  
-    searchTermSpan.textContent = query; // Set the search term in the span
+if (searchButton) {
+    searchButton.addEventListener('click', fetchMovies);
+}
 
-   
-    fetchMovies(query).then(movies => {
-        displayMovies(movies);
-    });
+if (moviesGrid) {
+    fetchMovies();
+}
 }
 
 
@@ -116,44 +139,15 @@ function searchMovies(searchTerm) {
 
 
 
-function redirectToResults() {
-    const query = document.getElementById('movieSearch').value.trim();
-    if (query) {
-        
-        window.location.href = `./film.html?search=${encodeURIComponent(query)}`;
-    } else {
-        alert('Please enter a search term.');
-    }
-}
 
 
-async function fetchMovies() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('search'); 
-    const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
-
-    const loadingSpinner = document.querySelector('.loading-state--spinner');
-    loadingSpinner.style.display = 'block'; 
-
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json(); 
-        
-        if (data.Response === "True") {
-            displayMovies(data.Search.slice(0, 6)); 
-        } else {
-            alert('No results found.');
-        }
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    } finally {
-         loadingSpinner.style.display = 'none'; 
-    }
-   
-}
 
 
-window.onload = fetchMovies;
+
+
+
+
+
 
 
 
