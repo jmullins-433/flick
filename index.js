@@ -18,6 +18,13 @@ function displayMovies(movies) {
 
 
 
+
+
+
+
+
+
+
 async function fetchMovies() {
     const movieSearchInput = document.getElementById('movieSearch');
 
@@ -26,7 +33,7 @@ async function fetchMovies() {
 
     const query = movieSearchInput.value.trim() || urlQuery;
 
-    const loadingSpinner = document.querySelector('.loading-state--spinner');
+    const loadingSpinner = document.querySelector('.loading-state');
 
     if (!query) {
         if (loadingSpinner) {
@@ -49,8 +56,10 @@ async function fetchMovies() {
     
 
     if (loadingSpinner) {
-        loadingSpinner.style.display = 'block';
+        loadingSpinner.style.display = 'flex';
     }
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     try {
         const apiUrl = `https://www.omdbapi.com/?apikey=dd2c9531&s=${query}`;
@@ -66,7 +75,7 @@ async function fetchMovies() {
         console.error('Error fetching data:', error);
     } finally {
         if (loadingSpinner) {
-            loadingSpinner.style.display = 'none';
+           loadingSpinner.style.display = 'none';
         }
     }
 }
@@ -84,7 +93,13 @@ async function fetchMovies() {
 
 
 
+
+
+
+
+
 function redirectToResults() {
+    
     const query = document.getElementById('movieSearch').value.trim();
 
     if (query) {
@@ -92,8 +107,9 @@ function redirectToResults() {
             `./film.html?search=${encodeURIComponent(query)}`;
     } else {
         alert('Please enter a search term.');
-        
-    }
+        }
+
+
 }
 
 const movieSearchInput = document.getElementById('movieSearch');
@@ -117,8 +133,6 @@ if (searchButton) {
 if (moviesGrid) {
     fetchMovies();
 }
-
-
 
 
 
