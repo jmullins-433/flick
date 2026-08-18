@@ -1,4 +1,4 @@
-
+ 
 function displayMovies(movies) {
     const moviesGrid = document.querySelector('.moviesGrid');
     moviesGrid.innerHTML = ''; 
@@ -26,9 +26,17 @@ async function fetchMovies() {
 
     const query = movieSearchInput.value.trim() || urlQuery;
 
-    if (!query) return;
+    const loadingSpinner = document.querySelector('.loading-state--spinner');
 
-    // If the search came from the Home page, show it in the input
+    if (!query) {
+        if (loadingSpinner) {
+            loadingSpinner.style.display = "none";
+    }
+        return;
+    }
+        
+        
+
     if (!movieSearchInput.value && urlQuery) {
         movieSearchInput.value = urlQuery;
     }
@@ -38,7 +46,7 @@ async function fetchMovies() {
         searchTermSpan.textContent = query;
     }
 
-    const loadingSpinner = document.querySelector('.loading-state--spinner');
+    
 
     if (loadingSpinner) {
         loadingSpinner.style.display = 'block';
@@ -66,6 +74,16 @@ async function fetchMovies() {
 
 
 
+
+
+
+
+
+
+
+
+
+
 function redirectToResults() {
     const query = document.getElementById('movieSearch').value.trim();
 
@@ -74,6 +92,7 @@ function redirectToResults() {
             `./film.html?search=${encodeURIComponent(query)}`;
     } else {
         alert('Please enter a search term.');
+        
     }
 }
 
@@ -98,10 +117,6 @@ if (searchButton) {
 if (moviesGrid) {
     fetchMovies();
 }
-
-
-
-
 
 
 
