@@ -465,6 +465,22 @@ h2.star {
 }
 
 
+#filter {
+    gap: 20px;
+}
+
+.sort-select {
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #6030b1;
+    border-radius: 8px;
+    color: #6030b1;
+    background-color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: -40px;
+}
+
 @media (max-width: 768px) {
     .navbar .links {
         display: none;

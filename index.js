@@ -1,4 +1,4 @@
- 
+ let currentMovies = [];
 function displayMovies(movies) {
     const moviesGrid = document.querySelector('.moviesGrid');
     moviesGrid.innerHTML = ''; 
@@ -67,7 +67,8 @@ async function fetchMovies() {
         const data = await response.json();
 
         if (data.Response === "True") {
-            displayMovies(data.Search.slice(0, 6));
+            currentMovies = data.Search.slice(0, 6);
+            displayMovies(currentMovies);
         } else {
             alert('No results found.');
         }
@@ -79,6 +80,8 @@ async function fetchMovies() {
         }
     }
 }
+
+
 
 
 
@@ -134,6 +137,24 @@ if (moviesGrid) {
     fetchMovies();
 }
 
+
+const sortMovies = document.getElementById('sortMovies');
+
+if (sortMovies) {
+    sortMovies.addEventListener('change', function () {
+        const sortedMovies = [...currentMovies];
+
+        if (this.value === 'az') {
+            sortedMovies.sort((a, b) => a.Title.localeCompare(b.Title));
+        }
+
+        if (this.value === 'za') {
+            sortedMovies.sort((a, b) => b.Title.localeCompare(a.Title));
+        }
+
+        displayMovies(sortedMovies);
+    });
+}
 
 
 
